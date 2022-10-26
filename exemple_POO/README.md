@@ -108,9 +108,9 @@ print(mon_zoo.liste_animaux)
 >>> []
 ```
 
-Notre zoo a bien été créé. Mais bien qu'il est été créé, un zoo sans animaux ne sert pas à grand chose... Rajoutons donc des animaux.
+Notre zoo a bien été créé. Mais bien qu'il ait été créé, un zoo sans animaux ne sert pas à grand chose... Rajoutons donc des animaux.
 
-Avant de les rajouter, il faut qu'ils puissent être mis quelque part, autrement dit, il faut qu'il y est des enclos. Nous allons donc créer une méthode qui va ajouter un enclos dans un zoo. Pour ce faire nous devons simplement augmenter la valeur de l'attribut ```nb_enclos```.
+Avant de les rajouter, il faut qu'ils puissent être mis quelque part, autrement dit, il faut qu'il y ait des enclos. Nous allons donc créer une méthode qui va ajouter un enclos dans un zoo. Pour ce faire nous devons simplement augmenter la valeur de l'attribut ```nb_enclos```.
 
 Pour cette "version" de la méthode, nous allons augmenter de *1* le nombre d'enclos.
 
@@ -128,7 +128,7 @@ class Zoo:
         self.nb_enclos = self.nb_enclos + 1
 ```
 
-Il est à noter que la méthode n'a pas besoin de renvoyer l'attribut ```nb_enclos``` pour que le changement soit fait, c'est l'avantage de la programmation orientée objet. Il suffit simplement d'appliquer la méthode ```ajouter_enclos()``` à un objet de la classe ```Zoo``` pour que l'attribut ```nb_enclos``` de l'objet soit augmenter. Ainsi pour ajouter un enclos, nous ferons :
+Il est à noter que la méthode n'a pas besoin de renvoyer l'attribut ```nb_enclos``` pour que le changement soit fait, c'est l'avantage de la programmation orientée objet. Il suffit simplement d'appliquer la méthode ```ajouter_enclos()``` à un objet de la classe ```Zoo``` pour que l'attribut ```nb_enclos``` de l'objet soit augmenté. Ainsi pour ajouter un enclos, nous ferons :
 
 ```python
 mon_zoo = Zoo("ZPoo")
@@ -176,7 +176,7 @@ print(mon_zoo.liste_animaux)
 >>> [('lion', 3)]
 ```
 
-*A noter : notre ajout n'est pas le meilleur, en effet, si l'on veut être très rigoureux, il faudra créer une classe Lion et ajouter à notre zoo des objets de la classe Lion. Ici, nous simplifions le fonctionnement et l'utilisation, le but n'est pas pour l'instant de faire le meilleur code possible mais plutôt de comprendre comment la POO fonctionne.*
+*A noter : notre ajout n'est pas le meilleur, en effet, si l'on veut être très rigoureux, il faudrait créer une classe Lion et ajouter à notre zoo des objets de la classe Lion. Ici, nous simplifions le fonctionnement et l'utilisation. Le but n'est pas pour l'instant de faire le meilleur code possible mais plutôt de comprendre comment la POO fonctionne.*
 
 Notre zoo compte à présent 3 lions. Bien que cela fonctionne, notre mode de fonctionnement présente des défauts :
 
@@ -191,7 +191,7 @@ Pour parer à ces 2 problèmes nous pourrions :
 
     - si on ajoute un animal déjà présent dans le zoo, alors on ajoute sans prendre en compte l'attribut ```enclos_libres```
 
-- afin de tenir le compte de nos animaux, il sera plus judicieux d'utiliser un tableau associatif (dictionnaire en Python) où la clé serait le nom de l'animal et la valeur combien de cet animal il y a dans notre zoo. Par la même occasion, nous allons modifier le nom de l'attribut pour qu'il "colle plus" avec la structure de données.
+- afin de tenir le compte de nos animaux, il sera plus judicieux d'utiliser un tableau associatif (dictionnaire en Python) où la clé serait le nom de l'animal et la valeur serait le nombre de cet animal présent dans notre zoo. Par la même occasion, nous allons modifier le nom de l'attribut pour qu'il "colle plus" avec la structure de données.
 
 Ainsi, notre classe ```Zoo``` deviendrait :
 
@@ -222,6 +222,8 @@ class Zoo:
             self.animaux[nom_animal] = self.animaux[nom_animal] + nombre_animal
 ```
 
+*Il est à noter que nous avons modifier la méthode ```ajouter_enclos()```.*
+
 Nous pouvons tester notre classe avec le code suivant :
 
 ```python
@@ -242,9 +244,9 @@ print(mon_zoo.animaux)
 >>> {'lion': 4}
 ```
 
-Nous pouvons remarquer qu'il n'est pas possible d'ajouter des gazelles car aucun enclos n'est pas libre et les ajouter dans le zoo reviendrait à les mettre dans l'enclos de lions. De plus, si l'on ajoute un animal déjà présent dans le zoo, alors on le met dans l'enclos avec les animaux de son espèce.
+Nous pouvons remarquer qu'il n'est pas possible d'ajouter des gazelles car aucun enclos n'est libre et les ajouter dans le zoo reviendrait à les mettre dans l'enclos de lions. De plus, si l'on ajoute un animal déjà présent dans le zoo, alors on le met dans l'enclos avec les animaux de son espèce.
 
-Nous pourrions améliorer notre méthode ```ajouter_animaux()``` en faisant en sorte que s'il n'y a plus d'emplacement vide, alors on en rajoute un en appelant la méthode ```ajouter_enclos()```.
+Nous pourrions améliorer notre méthode ```ajouter_animaux()``` en faisant en sorte que s'il n'y a plus d'enclos libre, alors on en rajoute un en appelant la méthode ```ajouter_enclos()```.
 
 ```python
 class Zoo:
