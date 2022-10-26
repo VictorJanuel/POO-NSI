@@ -104,8 +104,8 @@ print(mon_zoo.nom)
 print(mon_zoo.nb_enclos)
 >>> 0
 
-print(mon_zoo.compte_animaux)
->>> {}
+print(mon_zoo.liste_animaux)
+>>> []
 ```
 
 Notre zoo a bien été créé. Mais bien qu'il est été créé, un zoo sans animaux ne sert pas à grand chose... Rajoutons donc des animaux.
