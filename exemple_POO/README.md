@@ -63,7 +63,7 @@ Il est possible d'améliorer notre constructeur. En effet, nous pouvons indiquer
 class Zoo:
 
     # constructeur
-    def __init__(self, nom, nb_enclos, compte_animaux):
+    def __init__(self, nom, nb_enclos, liste_animaux):
         self.nom = nom
         self.nb_enclos = 0
         self.liste_animaux = []
